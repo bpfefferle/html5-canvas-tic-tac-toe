@@ -77,7 +77,7 @@ class TicTacToe
                     case 'X':
                         if (this.board[row][col] === 1 || this.board[row][col] === -1)
                         {
-                            console.log('Invalid move, try again.')  
+                            gameText('36px Verdana', '#EE5622', 'center', textScreen.width/2, textScreen.height/2 + offset, "Invalid move, try again.")  
                             break; 
                         }
                         else
@@ -98,7 +98,7 @@ class TicTacToe
                     case 'O':
                         if (this.board[row][col] === 1 || this.board[row][col] === -1)
                         {
-                            console.log('Invalid move, try again.')
+                            gameText('36px Verdana', '#ECA72C', 'center', textScreen.width/2, textScreen.height/2 + offset, "Invalid move, try again.") 
                             break;
                         }
                         else
