@@ -1,0 +1,20 @@
+*
+{
+    padding: 0px;
+    margin: 0px;
+}
+
+body
+{ 
+    background-color: #2E282A;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#text, #game
+{
+    background-color: #2E282A;
+}
