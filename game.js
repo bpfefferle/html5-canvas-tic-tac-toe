@@ -8,8 +8,8 @@ const textScreen = document.getElementById('text')
 const gameScreen = document.getElementById('game')
 const ctxTextScreen = textScreen.getContext('2d')
 const ctxGameScreen = gameScreen.getContext('2d')
-const offset = 50
-gameScreen.width = gameScreen.height = textScreen.width = 600
+const offset = 25
+gameScreen.width = gameScreen.height = textScreen.width = 360
 
 class TicTacToe
 {
@@ -46,7 +46,7 @@ class TicTacToe
         ctxTextScreen.clearRect(0, 0, textScreen.width, textScreen.height)
         ctxGameScreen.clearRect(0, 0, gameScreen.width, gameScreen.height)
         gameText('48px Verdana', '#F2FDFF', 'center', textScreen.width/2, textScreen.height/2, 'Tic Tac Toe')
-        gameText('36px Verdana', '#EE5622', 'center', textScreen.width/2, textScreen.height/2 + offset, 'X goes first.')
+        gameText('36px Verdana', '#EE5622', 'center', textScreen.width/2, textScreen.height/2 + offset*2, 'X goes first.')
         ctxGameScreen.strokeStyle = '#F2FDFF'
         // The loop that prints out a 3x3 grid.
         for (let row = 0; row < this.board.length; row++)
@@ -77,7 +77,7 @@ class TicTacToe
                     case 'X':
                         if (this.board[row][col] === 1 || this.board[row][col] === -1)
                         {
-                            gameText('36px Verdana', '#EE5622', 'center', textScreen.width/2, textScreen.height/2 + offset, "Invalid move, try again.")  
+                            gameText('36px Verdana', '#EE5622', 'center', textScreen.width/2, textScreen.height/2 + offset*2, "Invalid move!")  
                             break; 
                         }
                         else
@@ -92,25 +92,25 @@ class TicTacToe
                             this.board[row][col] = 1
                             this.totalTurns += 1
                             this.playerTurn = 'O'
-                            gameText('36px Verdana', '#ECA72C', 'center', textScreen.width/2, textScreen.height/2 + offset, "O's turn.")
+                            gameText('36px Verdana', '#ECA72C', 'center', textScreen.width/2, textScreen.height/2 + offset*2, "O's turn.")
                             break;
                         }
                     case 'O':
                         if (this.board[row][col] === 1 || this.board[row][col] === -1)
                         {
-                            gameText('36px Verdana', '#ECA72C', 'center', textScreen.width/2, textScreen.height/2 + offset, "Invalid move, try again.") 
+                            gameText('36px Verdana', '#ECA72C', 'center', textScreen.width/2, textScreen.height/2 + offset*2, "Invalid move!") 
                             break;
                         }
                         else
                         {
                             ctxGameScreen.strokeStyle = '#ECA72C'
                             ctxGameScreen.beginPath()
-                            ctxGameScreen.arc(xCor + (this.cellSize / 2), yCor + (this.cellSize / 2), 50, 0, 2 * Math.PI)
+                            ctxGameScreen.arc(xCor + (this.cellSize / 2), yCor + (this.cellSize / 2), 40, 0, 2 * Math.PI)
                             ctxGameScreen.stroke()
                             this.board[row][col] = -1
                             this.totalTurns += 1
                             this.playerTurn = 'X'
-                            gameText('36px Verdana', '#EE5622', 'center', textScreen.width/2, textScreen.height/2 + offset, "X's turn.")
+                            gameText('36px Verdana', '#EE5622', 'center', textScreen.width/2, textScreen.height/2 + offset*2, "X's turn.")
                             break;
                         }
                 }
@@ -171,7 +171,7 @@ class TicTacToe
             {
                 ctxTextScreen.clearRect(0, 0, textScreen.width, textScreen.height)
                 gameText('48px Verdana', '#F2FDFF', 'center', textScreen.width/2, textScreen.height/2, 'Tic Tac Toe')
-                gameText('36px Verdana', '#EE5622', 'center', textScreen.width/2, textScreen.height/2 + offset, "Draw! Play again?")
+                gameText('36px Verdana', '#EE5622', 'center', textScreen.width/2, textScreen.height/2 + offset*2, "Draw! Play again?")
                 return this.isGameOver = true
             }
         }
@@ -194,7 +194,7 @@ let gameText = (font, color, align, xPos, yPos, string) =>
 }
 
 // Start of game.
-let game = new TicTacToe([[0,0,0], [0,0,0], [0,0,0]], 200, 'X', 0, false, false, false)
+let game = new TicTacToe([[0,0,0], [0,0,0], [0,0,0]], 120, 'X', 0, false, false, false)
 game.drawGame()
 
 // Click event for tic-tac-toe grid.
@@ -220,15 +220,15 @@ gameScreen.addEventListener('mousedown', function gameCanvas(e)
         
         if (game.playerXWon === true)
         {
-            gameText('36px Verdana', '#EE5622', 'center', textScreen.width/2, textScreen.height/2 + offset, 'X wins! Play again?')  
+            gameText('36px Verdana', '#EE5622', 'center', textScreen.width/2, textScreen.height/2 + offset*2, 'X wins! Play again?')  
         } 
         else if (game.playerOWon === true)
         {
-            gameText('36px Verdana', '#ECA72C', 'center', textScreen.width/2, textScreen.height/2 + offset, 'O wins! Play again?')
+            gameText('36px Verdana', '#ECA72C', 'center', textScreen.width/2, textScreen.height/2 + offset*2, 'O wins! Play again?')
         }
         else
         {
-            gameText('36px Verdana', '#EE5622', 'center', textScreen.width/2, textScreen.height/2 + offset, "Draw! Play again?")
+            gameText('36px Verdana', '#EE5622', 'center', textScreen.width/2, textScreen.height/2 + offset*2, "Draw! Play again?")
         }
 
         // Click event for game text, restart game.
